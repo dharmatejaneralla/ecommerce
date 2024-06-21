@@ -31,7 +31,7 @@ class AppThemeData {
     useMaterial3: true,
     primaryColor: Colors.blue,
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Colors.black,
     fontFamily: 'Poppins',
     textTheme: textTheme.darkTextTheme,
     elevatedButtonTheme: elevatedButtonTheme.darkElevatedbutton,
