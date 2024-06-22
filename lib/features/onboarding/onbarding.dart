@@ -8,15 +8,18 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+final PageController _controller = PageController(initialPage: 0);
+var currentpage_index = 0;
 class OnBoardingScreen extends StatelessWidget {
-  const OnBoardingScreen({super.key});
-
+   const OnBoardingScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           PageView(
+            controller: _controller,
+            onPageChanged:  updatePage,
             children: const [
               OnBooardingPage(
                 image: ImagesStrings.onBoardingImage1,
@@ -44,6 +47,8 @@ class OnBoardingScreen extends StatelessWidget {
   }
 }
 
+
+
 class onBoarding_Next extends StatelessWidget {
   const onBoarding_Next({
     super.key,
@@ -56,7 +61,7 @@ class onBoarding_Next extends StatelessWidget {
       right: Sizes.defaultSpace,
       bottom: DeviceUtils.getBottomNavigationBarHeight(),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {nextPage(currentpage_index);},
         style: ElevatedButton.styleFrom(
             shape: const CircleBorder(side: BorderSide.none),
             backgroundColor: dark ? CustomColors.primary : CustomColors.black),
@@ -75,10 +80,11 @@ class onBoarding_Navigation extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return Positioned(
-      bottom: DeviceUtils.getBottomNavigationBarHeight() + 30,
-      left: Sizes.defaultSpace,
+      bottom: DeviceUtils.getBottomNavigationBarHeight() + 25,
+      left: Sizes.defaultSpace+5,
       child: SmoothPageIndicator(
-        controller: PageController(),
+        controller:_controller ,
+        onDotClicked: (index) => updatePage(index),
         count: 3,
         effect: ExpandingDotsEffect(
             activeDotColor: dark ? CustomColors.light : CustomColors.dark,
@@ -99,7 +105,7 @@ class onBoarding_skip extends StatelessWidget {
       top: DeviceUtils.getAppBarHeight(),
       right: Sizes.defaultSpace,
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {skipPage();},
         child: const Text('Skip'),
       ),
     );
@@ -138,9 +144,24 @@ class OnBooardingPage extends StatelessWidget {
             subtitle,
             style: Theme.of(context).textTheme.bodyMedium,
             textAlign: TextAlign.center,
-          )
+          ),
         ],
       ),
     );
   }
+}
+  void updatePage(index) {
+    currentpage_index = index;
+  }
+
+void nextPage(index) {
+  if (index  < 2) {
+    currentpage_index = index + 1;
+    _controller.animateToPage(index+1, duration: Durations.long1 , curve: Curves.ease);
+  }
+}
+void skipPage()
+{
+  currentpage_index = 2;
+  _controller.animateToPage(2,duration: Durations.long1,curve: Curves.easeIn);
 }
