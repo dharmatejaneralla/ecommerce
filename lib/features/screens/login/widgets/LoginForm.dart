@@ -1,4 +1,6 @@
+import 'package:ecommerce/features/screens/forgot_password/forgotpassword.dart';
 import 'package:ecommerce/features/screens/signup/signup.dart';
+import 'package:ecommerce/navigationmenu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -49,8 +51,10 @@ class Login_Form extends StatelessWidget {
                   ],
                 ),
                 TextButton(
-                  onPressed: () {},
-                  child: Text('Forgot Passswrod'),
+                  onPressed: () {
+                    Get.to(const ForgotPassword());
+                  },
+                  child: const Text('Forgot Passswrod'),
                 ),
               ],
             ),
@@ -60,7 +64,11 @@ class Login_Form extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               height: 50,
-              child: ElevatedButton(onPressed: () {}, child: Text('Sign In')),
+              child: ElevatedButton(
+                  onPressed: () {
+                    Get.to(NavigationMenu());
+                  },
+                  child: Text('Sign In')),
             ),
             const SizedBox(
               height: Sizes.spaceBtwItems,
@@ -70,7 +78,7 @@ class Login_Form extends StatelessWidget {
               height: 50,
               child: OutlinedButton(
                   onPressed: () {
-                    Get.to(SignUpScreen());
+                    Get.to(const SignUpScreen());
                   },
                   child: Text(
                     'Create Account',
