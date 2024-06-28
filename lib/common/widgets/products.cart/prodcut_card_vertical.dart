@@ -2,14 +2,24 @@ import 'package:ecommerce/utils/constants/colors.dart';
 import 'package:ecommerce/utils/constants/image_strings.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:ecommerce/utils/helpers/helper_functions.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProductCardVertical extends StatelessWidget {
-  const ProductCardVertical({super.key});
+  const ProductCardVertical(
+      {super.key,
+      required this.title,
+      required this.subtitle,
+      required this.price,
+      required this.discount,
+      this.discount_price = 0,
+      required this.image});
+
+  final String title, subtitle;
+  final double price;
+  final bool discount;
+  final String image;
+  final int discount_price;
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +28,13 @@ class ProductCardVertical extends StatelessWidget {
       width: 180,
       padding: const EdgeInsets.symmetric(horizontal: Sizes.sm),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: dark ? CustomColors.darkGrey : Colors.white,
         borderRadius: BorderRadius.circular(Sizes.productImageRadius),
         boxShadow: [
           BoxShadow(
-              color:
-                  dark ? CustomColors.darkGrey : Colors.grey.withOpacity(0.2),
+              color: dark
+                  ? CustomColors.white.withOpacity(0.2)
+                  : Colors.grey.withOpacity(0.2),
               blurRadius: 50,
               spreadRadius: 7,
               offset: const Offset(0, 2)),
@@ -40,28 +51,31 @@ class ProductCardVertical extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(Sizes.productImageRadius),
-                  child: const Image(
-                    image: AssetImage(ImagesStrings.productImage1),
+                  child: Image(
+                    image: AssetImage(image),
                     fit: BoxFit.contain,
                   ),
                 ),
-                Positioned(
-                  top: 12,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.yellow.withOpacity(.5),
-                        borderRadius: BorderRadius.circular(Sizes.sm)),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: Sizes.sm, vertical: Sizes.xs),
-                    child: Text(
-                      '25%',
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelSmall!
-                          .apply(color: Colors.black),
+                if (discount)
+                  Positioned(
+                    top: 12,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.yellow.withOpacity(.5),
+                          borderRadius: BorderRadius.circular(Sizes.sm)),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: Sizes.sm, vertical: Sizes.xs),
+                      child: Text(
+                        '$discount_price%',
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelSmall!
+                            .apply(color: Colors.black),
+                      ),
                     ),
-                  ),
-                ),
+                  )
+                else
+                  Container(),
                 Positioned(
                   right: 0,
                   top: 6,
@@ -85,7 +99,7 @@ class ProductCardVertical extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Green Nike Air Shoes',
+                  title,
                   style: Theme.of(context).textTheme.titleLarge,
                   textAlign: TextAlign.left,
                 ),
@@ -94,7 +108,7 @@ class ProductCardVertical extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      'Nike',
+                      subtitle,
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                     const Icon(
@@ -108,7 +122,7 @@ class ProductCardVertical extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '\$35.00',
+                      '\$$price',
                       style: Theme.of(context).textTheme.headlineSmall,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,

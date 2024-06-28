@@ -1,6 +1,7 @@
 import 'package:ecommerce/common/widgets/products.cart/prodcut_card_vertical.dart';
 import 'package:ecommerce/features/screens/home/widgets/HomeAppBar.dart';
 import 'package:ecommerce/features/screens/home/widgets/HomeCategories.dart';
+import 'package:ecommerce/utils/constants/image_strings.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -54,10 +55,28 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             HomeImageslider(),
-            const SizedBox(
-              height: Sizes.spaceBtwSections,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: GridView.builder(
+                itemCount: 16,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  mainAxisExtent: 280,
+                ),
+                itemBuilder: (_, index) => const ProductCardVertical(
+                  title: 'Green Nike Air Jordans',
+                  subtitle: 'Nike',
+                  price: 35.00,
+                  discount: true,
+                  image: ImagesStrings.productImage1,
+                  discount_price: 20,
+                ),
+              ),
             ),
-            ProductCardVertical(),
           ],
         ),
       ),
