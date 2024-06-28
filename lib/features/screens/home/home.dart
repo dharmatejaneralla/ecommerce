@@ -1,3 +1,4 @@
+import 'package:ecommerce/common/widgets/products.cart/prodcut_card_vertical.dart';
 import 'package:ecommerce/features/screens/home/widgets/HomeAppBar.dart';
 import 'package:ecommerce/features/screens/home/widgets/HomeCategories.dart';
 import 'package:ecommerce/utils/constants/sizes.dart';
@@ -53,6 +54,10 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             HomeImageslider(),
+            const SizedBox(
+              height: Sizes.spaceBtwSections,
+            ),
+            ProductCardVertical(),
           ],
         ),
       ),
