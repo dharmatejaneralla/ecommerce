@@ -1,6 +1,11 @@
-import 'package:ecommerce/common/widgets/custom_shapes/curvedwidgets.dart';
-import 'package:ecommerce/utils/constants/colors.dart';
+import 'package:ecommerce/features/screens/home/widgets/HomeAppBar.dart';
+import 'package:ecommerce/features/screens/home/widgets/HomeCategories.dart';
+import 'package:ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+
+import '../../../common/widgets/custom_shapes/Searchcontainer.dart';
+import 'widgets/HomeImageSlider.dart';
+import 'widgets/PrimaryHeader.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,66 +16,46 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ClipPath(
-              clipper: CurvedWidget(),
-              child: Container(
-                color: CustomColors.primary,
-                padding: const EdgeInsets.all(0),
-                child: SizedBox(
-                  height: 400,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: -150,
-                        right: -250,
-                        child: CircularContainer(
-                          backgroundColor: Colors.white.withOpacity(0.1),
-                        ),
-                      ),
-                      Positioned(
-                        top: 100,
-                        right: -300,
-                        child: CircularContainer(
-                          backgroundColor: Colors.white.withOpacity(0.1),
-                        ),
-                      ),
-                    ],
+            PrimaryHeader(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const HomeAppBar(),
+                  const SizedBox(
+                    height: Sizes.spaceBtwSections,
                   ),
-                ),
+                  const SearchContainer(text: "Search in Store"),
+                  const SizedBox(
+                    height: Sizes.spaceBtwSections,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: Sizes.defaultSpace),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Popular Categories',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall!
+                              .apply(color: Colors.white),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(
+                          height: Sizes.spaceBtwItems,
+                        ),
+                        const HomeCategories(),
+                      ],
+                    ),
+                  )
+                ],
               ),
-            )
+            ),
+            HomeImageslider(),
           ],
         ),
       ),
-    );
-  }
-}
-
-class CircularContainer extends StatelessWidget {
-  const CircularContainer({
-    super.key,
-    this.height = 400,
-    this.width = 400,
-    this.radius = 400,
-    this.padding = 0,
-    this.child,
-    this.backgroundColor = Colors.white,
-  });
-
-  final double? height, width;
-  final double radius, padding;
-  final Widget? child;
-  final Color backgroundColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width,
-      padding: EdgeInsets.all(padding),
-      decoration: BoxDecoration(
-          color: backgroundColor, borderRadius: BorderRadius.circular(radius)),
-      child: child,
     );
   }
 }
