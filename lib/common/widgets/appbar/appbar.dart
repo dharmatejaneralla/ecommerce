@@ -8,13 +8,13 @@ import '../../../utils/constants/sizes.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar(
       {super.key,
-      this.title,
+      required this.title,
       this.showbackarrow = false,
       this.leadingicon,
       this.actions,
       this.leadingonpressed});
 
-  final Widget? title;
+  final Widget title;
   final bool showbackarrow;
   final IconData? leadingicon;
   final List<Widget>? actions;
