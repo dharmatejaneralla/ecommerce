@@ -12,11 +12,14 @@ class FeatureBrandsWidgets extends StatelessWidget {
     required this.image,
     required this.verified,
     required this.onTap,
+    this.width = 56,
+    this.height = 56,
   });
 
   final String title, subtitle, image;
   final bool verified;
   final VoidCallback onTap;
+  final double width, height;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +33,8 @@ class FeatureBrandsWidgets extends StatelessWidget {
           color: Colors.transparent,
         ),
         child: Container(
-          width: 56,
-          height: 56,
+          width: width,
+          height: height,
           padding: const EdgeInsets.all(Sizes.sm),
           decoration: BoxDecoration(
               color: THelperFunctions.isDarkMode(context)
@@ -39,46 +42,50 @@ class FeatureBrandsWidgets extends StatelessWidget {
                   : Colors.white),
           child: Row(
             children: [
-              Image(
-                image: AssetImage(image),
-                fit: BoxFit.contain,
-                color: THelperFunctions.isDarkMode(context)
-                    ? Colors.white
-                    : Colors.black,
+              Flexible(
+                child: Image(
+                  image: AssetImage(image),
+                  fit: BoxFit.contain,
+                  color: THelperFunctions.isDarkMode(context)
+                      ? Colors.white
+                      : Colors.black,
+                ),
               ),
               const SizedBox(
                 width: Sizes.spaceBtwItems / 2,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        title,
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      if (verified)
-                        const Icon(
-                          Icons.verified,
-                          color: CustomColors.primary,
-                          size: Sizes.iconSm,
-                        )
-                    ],
-                  ),
-                  Text(
-                    subtitle,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelMedium!
-                        .apply(color: Colors.grey),
-                  )
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          title,
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        if (verified)
+                          const Icon(
+                            Icons.verified,
+                            color: CustomColors.primary,
+                            size: Sizes.iconSm,
+                          )
+                      ],
+                    ),
+                    Text(
+                      subtitle,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelMedium!
+                          .apply(color: Colors.grey),
+                    )
+                  ],
+                ),
               )
             ],
           ),
