@@ -66,9 +66,9 @@ class Login_Form extends StatelessWidget {
               height: 50,
               child: ElevatedButton(
                   onPressed: () {
-                    Get.to(NavigationMenu());
+                    Get.to(const NavigationMenu());
                   },
-                  child: Text('Sign In')),
+                  child: const Text('Sign In')),
             ),
             const SizedBox(
               height: Sizes.spaceBtwItems,

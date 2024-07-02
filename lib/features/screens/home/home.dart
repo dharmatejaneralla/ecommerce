@@ -51,6 +51,9 @@ class HomeScreen extends StatelessWidget {
                         const HomeCategories(),
                       ],
                     ),
+                  ),
+                  const SizedBox(
+                    height: Sizes.spaceBtwSections,
                   )
                 ],
               ),
@@ -65,9 +68,8 @@ class HomeScreen extends StatelessWidget {
                 itembuilder: (_, index) => GestureDetector(
                   onTap: () {},
                   child: const ProductCardVertical(
-                    title:
-                        'Green Nike Air Jordanssadkjbkiasdbvasdvasv fsvasfv asvbasffkijabsdkcjb',
-                    subtitle: 'Nikeksjdb vkbas',
+                    title: 'Green Nike Air Jordans',
+                    subtitle: 'Nike',
                     price: 35.00,
                     discount: true,
                     image: ImagesStrings.productImage1,

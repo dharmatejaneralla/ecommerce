@@ -34,7 +34,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: Sizes.spaceBtwSections,
               ),
-              Form_SocialButtons()
+              const Form_SocialButtons()
             ],
           ),
         ),

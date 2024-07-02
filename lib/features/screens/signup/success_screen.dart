@@ -12,7 +12,7 @@ class SignUpSuccess extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(Sizes.defaultSpace),
+          padding: const EdgeInsets.all(Sizes.defaultSpace),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -20,7 +20,7 @@ class SignUpSuccess extends StatelessWidget {
                 height: Sizes.spaceBtwSections,
               ),
               Image(
-                image: AssetImage(ImagesStrings.staticSuccessIllustration),
+                image: const AssetImage(ImagesStrings.staticSuccessIllustration),
                 width: THelperFunctions.screenWidth() * 0.6,
               ),
               const SizedBox(
@@ -46,7 +46,7 @@ class SignUpSuccess extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child:
-                    ElevatedButton(onPressed: () {}, child: Text('Continue')),
+                    ElevatedButton(onPressed: () {}, child: const Text('Continue')),
               ),
             ],
           ),

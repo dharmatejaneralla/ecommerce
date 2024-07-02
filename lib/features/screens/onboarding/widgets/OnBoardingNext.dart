@@ -15,13 +15,13 @@ class onBoarding_Next extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
-    final _controller = OnBoardingController.instance;
+    final controller = OnBoardingController.instance;
     return Positioned(
       right: Sizes.defaultSpace,
       bottom: DeviceUtils.getBottomNavigationBarHeight(),
       child: ElevatedButton(
         onPressed: () {
-          _controller.nextPage();
+          controller.nextPage();
         },
         style: ElevatedButton.styleFrom(
             shape: const CircleBorder(side: BorderSide.none),

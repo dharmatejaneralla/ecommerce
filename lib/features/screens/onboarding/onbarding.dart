@@ -14,14 +14,14 @@ class OnBoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = Get.put(OnBoardingController());
+    final controller = Get.put(OnBoardingController());
 
     return Scaffold(
       body: Stack(
         children: [
           PageView(
-            controller: _controller.pageController,
-            onPageChanged: _controller.updatepageindex,
+            controller: controller.pageController,
+            onPageChanged: controller.updatepageindex,
             children: const [
               OnBooardingPage(
                 image: ImagesStrings.onBoardingImage1,

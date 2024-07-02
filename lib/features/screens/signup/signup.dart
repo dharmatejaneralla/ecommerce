@@ -26,8 +26,8 @@ class SignUpScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SignupHeader(),
-              SignUpForm(),
+              const SignupHeader(),
+              const SignUpForm(),
               const SizedBox(
                 height: Sizes.spaceBtwSections / 2,
               ),
@@ -36,7 +36,7 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(
                 height: Sizes.spaceBtwItems,
               ),
-              Form_SocialButtons()
+              const Form_SocialButtons()
             ],
           ),
         ),

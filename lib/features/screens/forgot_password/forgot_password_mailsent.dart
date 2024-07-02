@@ -75,7 +75,7 @@ class ForgotPasswordMailSent extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {},
-                child: Text('Resend Email'),
+                child: const Text('Resend Email'),
               )
             ],
           ),

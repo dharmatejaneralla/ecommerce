@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants/colors.dart';
 
 class Form_Divider extends StatelessWidget {
-  Form_Divider({super.key, required this.dark, required this.dividertext});
+  const Form_Divider({super.key, required this.dark, required this.dividertext});
 
   final bool dark;
   final dividertext;

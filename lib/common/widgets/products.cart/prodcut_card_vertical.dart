@@ -32,8 +32,8 @@ class ProductCardVertical extends StatelessWidget {
         boxShadow: [
           BoxShadow(
               color: dark
-                  ? CustomColors.white.withOpacity(0.2)
-                  : Colors.black.withOpacity(0.2),
+                  ? CustomColors.white.withOpacity(0.1)
+                  : Colors.black.withOpacity(0.1),
               blurRadius: 50,
               spreadRadius: 7,
               offset: const Offset(0, 2)),
